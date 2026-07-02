@@ -1,5 +1,0 @@
-print ("hey")
-print ("ich heisse Asghar")
-print ("was gehts ab")
-print ("kirsch")
-print ("Analzse der Daten")
