@@ -10,6 +10,12 @@ from core.db import Base
 EMBEDDING_DIM = 384  # muss zum verwendeten sentence-transformers-Modell passen
 
 
+def _enum_column(enum_cls: type[enum.Enum]) -> Enum:
+    """Speichert enum.value (z.B. "ingest") statt enum.name (z.B. "INGEST") --
+    passend zur durchgaengig kleingeschriebenen Terminologie in CLAUDE.md."""
+    return Enum(enum_cls, values_callable=lambda cls: [member.value for member in cls])
+
+
 class EntityType(str, enum.Enum):
     GENE = "gene"
     PROTEIN = "protein"
@@ -56,7 +62,7 @@ class Entity(Base):
     __tablename__ = "entity"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    type: Mapped[EntityType] = mapped_column(Enum(EntityType))
+    type: Mapped[EntityType] = mapped_column(_enum_column(EntityType))
     canonical_id: Mapped[str] = mapped_column(index=True)
     symbol: Mapped[str | None] = mapped_column(index=True)
     name: Mapped[str | None]
@@ -115,7 +121,7 @@ class Mention(Base):
     span_start: Mapped[int]
     span_end: Mapped[int]
     surface_form: Mapped[str]  # der tatsaechlich im Text gefundene String
-    source: Mapped[MentionSource] = mapped_column(Enum(MentionSource))
+    source: Mapped[MentionSource] = mapped_column(_enum_column(MentionSource))
     confidence: Mapped[float | None]
 
 
@@ -183,7 +189,7 @@ class GeneScore(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     entity_id: Mapped[int] = mapped_column(ForeignKey("entity.id"), index=True)
     target_celltype_id: Mapped[int] = mapped_column(ForeignKey("entity.id"), index=True)
-    component: Mapped[ScoreComponent] = mapped_column(Enum(ScoreComponent))
+    component: Mapped[ScoreComponent] = mapped_column(_enum_column(ScoreComponent))
     value: Mapped[float]
     computed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
@@ -195,8 +201,8 @@ class JobRun(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     document_id: Mapped[int] = mapped_column(ForeignKey("documents.id"))
-    stage: Mapped[JobStage] = mapped_column(Enum(JobStage))
-    status: Mapped[JobStatus] = mapped_column(Enum(JobStatus), default=JobStatus.PENDING)
+    stage: Mapped[JobStage] = mapped_column(_enum_column(JobStage))
+    status: Mapped[JobStatus] = mapped_column(_enum_column(JobStatus), default=JobStatus.PENDING)
     started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     error: Mapped[str | None] = mapped_column(Text)
