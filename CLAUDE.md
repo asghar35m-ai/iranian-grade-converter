@@ -124,12 +124,14 @@ etwas extrahiert, wird die Quellstelle mitgespeichert.
 
 ## Roadmap
 
-- [ ] **Phase 0** — Aufräumen: Doppelte Streamlit-Apps zusammenführen,
+- [x] **Phase 0** — Aufräumen: Doppelte Streamlit-Apps zusammenführen,
       projektfremde Dateien (z. B. `notenrechner.py`) entfernen, `.env`-Handling,
       `requirements.txt` sauber
-- [ ] **Phase 1** — Schema, Ingestion, Caching. Ziel: 500 Paper zu einem
-      Differenzierungspfad reproduzierbar in der DB
-- [ ] **Phase 2** — Normalisierung via PubTator3
+- [x] **Phase 1** — Schema, Ingestion, Caching. Ziel: 500 Paper zu einem
+      Differenzierungspfad reproduzierbar in der DB.
+      **Stand:** abgeschlossen, 1526 Dokumente zum Pilotpfad (iPSC →
+      Betazellen) in der DB. Suchanfragen stehen in `config/queries.yaml`.
+- [ ] **Phase 2** — Normalisierung via PubTator3 (nächster Schritt)
 - [ ] **Phase 3** — Hybride Suche (Postgres-Volltext + pgvector, fusioniert per
       Reciprocal Rank Fusion)
 - [ ] **Phase 4** — LLM-Protokollextraktion
