@@ -1,0 +1,36 @@
+# Suchstrategie fuer den Pilotpfad (iPSC -> Betazellen), Europe PMC.
+#
+# "label" ist nur zur Anzeige/Wiedererkennung. "query" ist die tatsaechliche
+# Europe-PMC-Anfrage (siehe https://europepmc.org/searchsyntax).
+#
+# Wichtig: Europe PMC behandelt unquotierte Mehrwort-Suchen NICHT als Phrase,
+# sondern sehr breit (z.B. "SC-beta cells" ohne Anfuehrungszeichen ergab
+# 132.871 Treffer statt der gemeinten ~34). Deshalb stehen feste Begriffe in
+# Anfuehrungszeichen und werden mit AND verknuepft. Wer eine Anfrage anpasst:
+# einzelne Fachbegriffe in Anfuehrungszeichen setzen, mehrere Begriffe mit
+# AND/OR verbinden -- nicht einfach Woerter aneinanderreihen.
+
+queries:
+  - name: ipsc_beta_diff
+    label: "iPSC beta cell differentiation"
+    query: '"iPSC" AND "beta cell differentiation"'
+
+  - name: hesc_beta_diff
+    label: "hESC beta cell differentiation"
+    query: '"hESC" AND "beta cell differentiation"'
+
+  - name: sc_beta_cells
+    label: "SC-beta cells"
+    query: '"SC-beta cells"'
+
+  - name: stem_cell_islets
+    label: "stem cell derived islets"
+    query: '"stem cell-derived islets" OR "stem cell derived islets"'
+
+  - name: pancreatic_endoderm_nkx61
+    label: "pancreatic endoderm differentiation NKX6-1"
+    query: '"pancreatic endoderm" AND "NKX6-1"'
+
+  - name: insulin_producing_protocol
+    label: "insulin producing cells differentiation protocol"
+    query: '"insulin-producing cells" AND "differentiation protocol"'
