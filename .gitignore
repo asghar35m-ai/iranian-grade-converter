@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# PaperGeneAI: extrahierter Paper-Text ist nur ein Laufzeit-Cache
+# der jeweils hochgeladenen PDF, kein eigenständiger Inhalt
+LocalBioPaperAI/data/paper_text.txt
