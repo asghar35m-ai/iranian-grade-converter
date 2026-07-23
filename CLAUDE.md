@@ -22,6 +22,16 @@ Drei Anwendungsfälle, die auf **denselben Daten** aufsetzen:
 2. **Protokolle vergleichen** — welche Faktoren, Konzentrationen, Zeitfenster, welche Effizienz
 3. **Gene und Proteine priorisieren** — nachvollziehbar begründetes Ranking
 
+## Pilotpfad
+
+Der erste Differenzierungspfad, an dem Schema, Ingestion und Scoring
+entwickelt und getestet werden: **iPSC → pankreatische Betazellen**.
+
+**Prüfgene:** PDX1, NKX6-1, NEUROG3, MAFA. Diese vier sind in der Literatur
+zu diesem Pfad gut etabliert. Landet keines davon im Scoring weit oben,
+stimmt etwas mit Extraktion, Normalisierung oder Scoring nicht — das ist
+der Sanity-Check für jede Phase.
+
 ## Zielarchitektur
 
 Fünf Verarbeitungsstufen, eine gemeinsame Datenbank:
