@@ -220,3 +220,4 @@ __marimo__/
 # PaperGeneAI: extrahierter Paper-Text ist nur ein Laufzeit-Cache
 # der jeweils hochgeladenen PDF, kein eigenständiger Inhalt
 LocalBioPaperAI/data/paper_text.txt
+.DS_Store
